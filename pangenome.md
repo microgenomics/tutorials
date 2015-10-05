@@ -47,7 +47,7 @@ You should end up with 11 files including a .gff file.
 
 ![Prokka output](https://github.com/CBIBUNAB/tutorials/blob/master/img/prokka.png)
 
-I'm coping a description of the output files from the Prokka documentation here, but please check with the developers for in-depth documentation.
+I'm copying a description of the output files from the Prokka documentation here, but please check with the developers for in-depth documentation.
 
 #### Output Files
 
