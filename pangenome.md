@@ -8,7 +8,7 @@ This demo relies on two pieces of software, Prokka and Roary, so please remember
 
 For details on obtaining Prokka and Roary, please visit their GiHub repos [here](https://github.com/tseemann/prokka/blob/master/README.md) and [here](https://github.com/sanger-pathogens/Roary/blob/master/README.md).
 
-Assuming you have Prokka and Roary installed and in your PATH variable, go ahead and download the six *Listeria monocitogenes* genomes we are going to use for this demo. From the Terminal:
+Assuming you have Prokka and Roary installed and in your PATH variable, go ahead and download the six *Listeria monocytogenes* genomes we are going to use for this demo. From the Terminal:
 
 		wget https://github.com/CBIBUNAB/tutorials/blob/master/genomes/GCA_000008285.1_ASM828v1_genomic.fna
 		wget https://github.com/CBIBUNAB/tutorials/blob/master/genomes/GCA_000021185.1_ASM2118v1_genomic.fna
@@ -21,13 +21,25 @@ You should see something like the following:
 
 ![genomes](https://github.com/CBIBUNAB/tutorials/blob/master/img/genomes.png)
 
+
+These genomes correspond to isolates of L. monocytogenes reported in *Probing the pan-genome of Listeria monocytogenes: new insights into intraspecific niche expansion and genomic diversification* [PMID: 20846431](http://www.ncbi.nlm.nih.gov/pubmed/?term=20846431).
+
+| Genome Assembly | Genome Accession |  Genotype  | Sequenced by |
+|:------------- | 	--------------- 	| -------------| ------------ |
+| GCA_000196035 |	AL591824			| typeII     | European Consortium|
+| GCA_000026705	| 	FM242711			| typeI      | Institut_Pasteur|
+| GCA_000008285	| 	AE017262			| typeI      | TIGR|
+| GCA_000021185	| 	CP001175			| typeIII    | MSU|
+| GCA_000168815	| 	AATL00000000		| typeI      | Broad Institute|
+| GCA_000168635	| 	AARW00000000		| typeII     | Broad Institute |
+
 # Annotating genomes
 
 Now that you have the genomes, we need to annotate them to determine the location and attributes of the genes contained in them. We will use Prokka because it's extremely fast and it performs well, and also becasue the *features* file that produces (GFF3) is compatible with Roary.
 
 		prokka --kingdom Bacteria --outdir prokka_GCA_000008285 --genus Listeria --locustag GCA_000008285 GCA_000008285.1_ASM828v1_genomic.fna
 
-Make sure you annotate the four genomes by replace the -outdir and -locustag and fasta file accordingly. It should take ~ 4 minutes per genome in a standard laptop computer.
+Make sure you annotate the six genomes by replacing the -outdir and -locustag and fasta file accordingly. It should take ~ 4 minutes per genome in a standard laptop computer.
 
 # Citation
 
