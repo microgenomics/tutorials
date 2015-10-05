@@ -1,4 +1,4 @@
-![UNAB](https://github.com/CBIBUNAB/tutorials/blob/master/img/unab.jpg) 
+![UNAB](https://github.com/CBIBUNAB/tutorials/blob/master/img/unab.jpg = 50x50) 
 # Genome annotation and Pangenome analysis
 
 ##### In this demo we will explore how to determine a pangenome from a collection of isolate sequences in fasta format
