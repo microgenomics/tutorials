@@ -19,7 +19,13 @@ You should see something like the following:
 
 ![genomes](https://github.com/CBIBUNAB/tutorials/blob/master/img/genomes.png)
 
+# Annotating genomes
 
+Now that you have the genomes, we need to annotate them to determine the location and attributes of the genes contained in them. We will use Prokka because it's extremely fast and it performs well, and also becasue the *features* file that produces (GFF3) is compatible with Roary.
+
+		prokka --kingdom Bacteria --outdir prokka_GCA_000008285 --genus Listeria --locustag GCA_000008285 GCA_000008285.1_ASM828v1_genomic.fna
+
+Make sure you annotate the four genomes by replace the -outdir and -locustag and fasta file accordingly. It should take ~ 4 minutes per genome in a standard laptop computer.
 
 # Citation
 
