@@ -1,10 +1,10 @@
 # Genome annotation and Pangenome analysis
 
-##### In this demo we will explore how to determine a pangenome from a collection of isolate genome sequences in fasta format
+#### In this demo we will explore how to determine a pangenome from a collection of isolate genome sequences in fasta format
 
 This demo relies on two pieces of software, *Prokka* and *Roary*, so please remember to cite them if you end up publishing results obtained with these tools
 
-# Obtaining data
+## Obtaining data
 
 For details on obtaining Prokka and Roary, please visit their GitHub repos [here](https://github.com/tseemann/prokka/blob/master/README.md) and [here](https://github.com/sanger-pathogens/Roary/blob/master/README.md).
 
@@ -17,7 +17,7 @@ Assuming you have Prokka and Roary installed and in your PATH variable, go ahead
 		wget https://raw.githubusercontent.com/CBIBUNAB/tutorials/master/genomes/GCA_000168635.2_ASM16863v2_genomic.fna
 		wget https://raw.githubusercontent.com/CBIBUNAB/tutorials/master/genomes/GCA_000168815.1_ASM16881v1_genomic.fna
 
-You should see something like the following:
+You should get something like the following:
 
 ![genomes](https://github.com/CBIBUNAB/tutorials/blob/master/img/genomes.png)
 
@@ -35,7 +35,7 @@ We selected the following six genomes based on their level of completeness (fini
 | GCA_000168635	| 	AARW00000000		| type II     | Broad Institute | 25 contigs|
 | GCA_000021185	| 	CP001175			| type III    | MSU| Finished|
 
-# Annotating genomes
+## Annotating genomes
 
 By annotating the genomes we mean to add information regarding genes, their location, strandedness, and features and attributes. Now that you have the genomes, we need to annotate them to determine the location and attributes of the genes contained in them. We will use Prokka because it's extremely fast and it performs well, and also because the *features* file that produces (GFF3) is compatible with Roary.
 
@@ -49,7 +49,7 @@ You should end up with 11 files including a .gff file.
 
 I'm copying a description of the output files from the Prokka documentation here, but please check with the developers for in-depth documentation.
 
-#### Output Files
+### Output Files
 
 | Extension | Description |
 | --------- | ----------- |
@@ -67,13 +67,13 @@ I'm copying a description of the output files from the Prokka documentation here
 
 GFF files are the input for Roary to compute the pangenome and contain all the annotations plus the genome sequence in fasta format appended at the end.
 
-# Determining the pangenome
+## Determining the pangenome
 
 Let's put all the .gff files in the same folder (e.g., `./gff`) and run *Roary*
 		
 		roary -p -o ./demo -e -n -v ./gff/*.gff
 
-Roary will get all the coding sequences, convert them into protein, and create clusters. Then, using BLASTP and MCL, *Roary* will create clusters, and check for paralogs. Finally, *Roary* will take every isolate and order them by presence/absence of orthologs. The summary output is present in the `summary_statistics.txt` file. In our case, the results are as follows:
+Roary will get all the coding sequences, convert them into protein, and create pre-clusters. Then, using BLASTP and MCL, *Roary* will create clusters, and check for paralogs. Finally, *Roary* will take every isolate and order them by presence/absence of orthologs. The summary output is present in the `summary_statistics.txt` file. In our case, the results are as follows:
 
 Genes| Number
 |----|-------|
@@ -83,7 +83,7 @@ Genes| Number
 |Cloud genes (0% <= strains < 15%)|	0|
 |Total genes|	4464|
 
-Addiotionally, *Roary* produces a `gene_presence_absence.csv` file that can be opened in any spreadsheet software to manually explore the results. In this file, you will find information such as gene name and gene annotation, and, of course, whether a gene is present in a genome or not.
+Additionally, *Roary* produces a `gene_presence_absence.csv` file that can be opened in any spreadsheet software to manually explore the results. In this file, you will find information such as gene name and gene annotation, and, of course, whether a gene is present in a genome or not.
 
 We already have a phylogeny that represents the evolutionary history of this six isolates, where they form clades according to their genotype, i.e., type I isolates together, and so on.
 
@@ -100,10 +100,7 @@ You should get three files: a pangenome matrix, a frequency plot, and a pie char
 ![pie](https://github.com/CBIBUNAB/tutorials/blob/master/img/pangenome_pie.png)
 
 
-
-
-
-# Citation
+## Citation
 
 Seemann T.  
 *Prokka: rapid prokaryotic genome annotation*  
