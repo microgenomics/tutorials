@@ -6,7 +6,7 @@ This demo relies on two pieces of software, *Prokka* and *Roary*, so please reme
 
 # Obtaining data
 
-For details on obtaining Prokka and Roary, please visit their GiHub repos [here](https://github.com/tseemann/prokka/blob/master/README.md) and [here](https://github.com/sanger-pathogens/Roary/blob/master/README.md).
+For details on obtaining Prokka and Roary, please visit their GitHub repos [here](https://github.com/tseemann/prokka/blob/master/README.md) and [here](https://github.com/sanger-pathogens/Roary/blob/master/README.md).
 
 Assuming you have Prokka and Roary installed and in your PATH variable, go ahead and download the six *Listeria monocytogenes* genomes we are going to use for this demo. From the Terminal:
 		
