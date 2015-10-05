@@ -26,12 +26,12 @@ These genomes correspond to isolates of L. monocytogenes reported in *Probing th
 
 | Genome Assembly | Genome Accession |  Genotype  | Sequenced by |
 |:------------- | 	--------------- 	| -------------| ------------ |
-| GCA_000196035 |	AL591824			| typeII     | European Consortium|
-| GCA_000026705	| 	FM242711			| typeI      | Institut_Pasteur|
-| GCA_000008285	| 	AE017262			| typeI      | TIGR|
-| GCA_000021185	| 	CP001175			| typeIII    | MSU|
-| GCA_000168815	| 	AATL00000000		| typeI      | Broad Institute|
-| GCA_000168635	| 	AARW00000000		| typeII     | Broad Institute |
+| GCA_000196035 |	AL591824			| type II     | European Consortium|
+| GCA_000026705	| 	FM242711			| type I      | Institut_Pasteur|
+| GCA_000008285	| 	AE017262			| type I      | TIGR|
+| GCA_000021185	| 	CP001175			| type III    | MSU|
+| GCA_000168815	| 	AATL00000000		| type I      | Broad Institute|
+| GCA_000168635	| 	AARW00000000		| type II     | Broad Institute |
 
 # Annotating genomes
 
@@ -40,6 +40,8 @@ Now that you have the genomes, we need to annotate them to determine the locatio
 		prokka --kingdom Bacteria --outdir prokka_GCA_000008285 --genus Listeria --locustag GCA_000008285 GCA_000008285.1_ASM828v1_genomic.fna
 
 Make sure you annotate the six genomes by replacing the -outdir and -locustag and fasta file accordingly. It should take ~ 4 minutes per genome in a standard laptop computer.
+
+You should end up with 
 
 # Citation
 
