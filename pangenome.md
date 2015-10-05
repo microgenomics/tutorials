@@ -39,7 +39,7 @@ Now that you have the genomes, we need to annotate them to determine the locatio
 
 		prokka --kingdom Bacteria --outdir prokka_GCA_000008285 --genus Listeria --locustag GCA_000008285 GCA_000008285.1_ASM828v1_genomic.fna
 
-Make sure you annotate the six genomes by replacing the -outdir and -locustag and fasta file accordingly. It should take ~ 4 minutes per genome in a standard laptop computer.
+Make sure you annotate the six genomes by replacing the `-outdir` and `-locustag` and `fasta file` accordingly. It should take ~ 4 minutes per genome in a standard laptop computer.
 
 You should end up with 11 files including a .gff file. 
 
@@ -48,6 +48,24 @@ You should end up with 11 files including a .gff file.
 GFF files are the input for Roary to compute the pangenome and contain all the annotations plus the genome sequence in fasta format appended at the end.
 
 # Determining the pangenome
+
+Let's put all the .gff files in the same folder (e.g., `./gff`)
+		
+		roary -p -o ./demo -e -n -v ./gff/*.gff
+
+We already have a phylogeny that represents the evolutionary history of this six isolates
+
+![phylogeny]()
+
+Roary comes with a python script that allows you to generate a few plots to graphically assess your analysis output. Try issuing the following command:
+
+		python roary_plots.py core_gene_alignment.nwk gene_presence_absence.csv
+
+You should get three files: a pangenome matrix, a frequency plot, and a pie chart.
+
+![matrix]()
+![frequency]()
+![pie]()
 
 
 
