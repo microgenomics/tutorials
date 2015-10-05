@@ -83,19 +83,17 @@ Genes| Number
 |Cloud genes (0% <= strains < 15%)|	0|
 |Total genes|	4464|
 
+Addiotionally, *Roary* produces a `gene_presence_absence.csv` file that can be opened in any spreadsheet software to manually explore the results. In this file, you will find information such as gene name and gene annotation, and, of course, whether a gene is present in a genome or not.
 
-
-
-
-We already have a phylogeny that represents the evolutionary history of this six isolates
+We already have a phylogeny that represents the evolutionary history of this six isolates, where they form clades according to their genotype, i.e., type I isolates together, and so on.
 
 ![phylogeny](https://github.com/CBIBUNAB/tutorials/blob/master/img/core_gene_alignment.tre.png)
 
-Roary comes with a python script that allows you to generate a few plots to graphically assess your analysis output. Try issuing the following command:
+*Roary* comes with a python script that allows you to generate a few plots to graphically assess your analysis output. Try issuing the following command:
 
 		python roary_plots.py core_gene_alignment.nwk gene_presence_absence.csv
 
-You should get three files: a pangenome matrix, a frequency plot, and a pie chart.
+You should get three files: a pangenome matrix, a frequency plot, and a pie chart. 
 
 ![matrix](https://github.com/CBIBUNAB/tutorials/blob/master/img/pangenome_matrix.png)
 ![frequency](https://github.com/CBIBUNAB/tutorials/blob/master/img/pangenome_frequency.png)
