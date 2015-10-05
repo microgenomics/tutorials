@@ -63,9 +63,11 @@ Roary comes with a python script that allows you to generate a few plots to grap
 
 You should get three files: a pangenome matrix, a frequency plot, and a pie chart.
 
-![matrix]()
-![frequency]()
-![pie]()
+![matrix](https://github.com/CBIBUNAB/tutorials/blob/master/img/pangenome_matrix.png)
+![frequency](https://github.com/CBIBUNAB/tutorials/blob/master/img/pangenome_frequency.png)
+![pie](https://github.com/CBIBUNAB/tutorials/blob/master/img/pangenome_pie.png)
+
+
 
 
 
