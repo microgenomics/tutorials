@@ -1,8 +1,8 @@
 # Genome annotation and Pangenome analysis
 
-##### In this demo we will explore how to determine a pangenome from a collection of isolate sequences in fasta format
+##### In this demo we will explore how to determine a pangenome from a collection of isolate genome sequences in fasta format
 
-This demo relies on two pieces of software, Prokka and Roary, so please remember to cite them if you publish results obtained from these tools
+This demo relies on two pieces of software, *Prokka* and *Roary*, so please remember to cite them if you end up publishing results obtained with these tools
 
 # Obtaining data
 
@@ -22,20 +22,22 @@ You should see something like the following:
 ![genomes](https://github.com/CBIBUNAB/tutorials/blob/master/img/genomes.png)
 
 
-These genomes correspond to isolates of L. monocytogenes reported in *Probing the pan-genome of Listeria monocytogenes: new insights into intraspecific niche expansion and genomic diversification* [PMID: 20846431](http://www.ncbi.nlm.nih.gov/pubmed/?term=20846431).
+These genomes correspond to isolates of *L. monocytogenes* reported in *Probing the pan-genome of Listeria monocytogenes: new insights into intraspecific niche expansion and genomic diversification* [PMID: 20846431](http://www.ncbi.nlm.nih.gov/pubmed/?term=20846431).
 
-| Genome Assembly | Genome Accession |  Genotype  | Sequenced by |
-|:------------- | 	--------------- 	| -------------| ------------ |
-| GCA_000026705	| 	FM242711			| type I      | Institut_Pasteur|
-| GCA_000008285	| 	AE017262			| type I      | TIGR|
-| GCA_000168815	| 	AATL00000000		| type I      | Broad Institute|
-| GCA_000196035 |	AL591824			| type II     | European Consortium|
-| GCA_000168635	| 	AARW00000000		| type II     | Broad Institute |
-| GCA_000021185	| 	CP001175			| type III    | MSU|
+We selected the following six genomes based on their level of completeness (finished; contigs, etc) and their genotype (type I-III)
+
+| Genome Assembly | Genome Accession |  Genotype  | Sequenced by | Status|
+|:------------- | 	--------------- 	| -------------| ------------ | ------------ |
+| GCA_000026705	| 	FM242711			| type I      | Institut_Pasteur| Finished|
+| GCA_000008285	| 	AE017262			| type I      | TIGR| Finished|
+| GCA_000168815	| 	AATL00000000		| type I      | Broad Institute| 79 contigs|
+| GCA_000196035 |	AL591824			| type II     | European Consortium| Finished|
+| GCA_000168635	| 	AARW00000000		| type II     | Broad Institute | 25 contigs|
+| GCA_000021185	| 	CP001175			| type III    | MSU| Finished|
 
 # Annotating genomes
 
-Now that you have the genomes, we need to annotate them to determine the location and attributes of the genes contained in them. We will use Prokka because it's extremely fast and it performs well, and also becasue the *features* file that produces (GFF3) is compatible with Roary.
+By annotsating the genomes we mean to add information regarding genes, their location, strandedness, and features and attributes. Now that you have the genomes, we need to annotate them to determine the location and attributes of the genes contained in them. We will use Prokka because it's extremely fast and it performs well, and also becasue the *features* file that produces (GFF3) is compatible with Roary.
 
 		prokka --kingdom Bacteria --outdir prokka_GCA_000008285 --genus Listeria --locustag GCA_000008285 GCA_000008285.1_ASM828v1_genomic.fna
 
