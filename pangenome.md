@@ -26,12 +26,12 @@ These genomes correspond to isolates of L. monocytogenes reported in *Probing th
 
 | Genome Assembly | Genome Accession |  Genotype  | Sequenced by |
 |:------------- | 	--------------- 	| -------------| ------------ |
-| GCA_000196035 |	AL591824			| type II     | European Consortium|
 | GCA_000026705	| 	FM242711			| type I      | Institut_Pasteur|
 | GCA_000008285	| 	AE017262			| type I      | TIGR|
-| GCA_000021185	| 	CP001175			| type III    | MSU|
 | GCA_000168815	| 	AATL00000000		| type I      | Broad Institute|
+| GCA_000196035 |	AL591824			| type II     | European Consortium|
 | GCA_000168635	| 	AARW00000000		| type II     | Broad Institute |
+| GCA_000021185	| 	CP001175			| type III    | MSU|
 
 # Annotating genomes
 
@@ -45,7 +45,11 @@ You should end up with 11 files including a .gff file.
 
 ![Prokka output](https://github.com/CBIBUNAB/tutorials/blob/master/img/prokka.png)
 
-GFF files are the input for Roary to compute the pangenome.
+GFF files are the input for Roary to compute the pangenome and contain all the annotations plus the genome sequence in fasta format appended at the end.
+
+# Determining the pangenome
+
+
 
 # Citation
 
