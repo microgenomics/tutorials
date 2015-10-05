@@ -57,7 +57,7 @@ Let's put all the .gff files in the same folder (e.g., `./gff`)
 
 We already have a phylogeny that represents the evolutionary history of this six isolates
 
-![phylogeny]()
+![phylogeny](https://github.com/CBIBUNAB/tutorials/blob/master/img/core_gene_alignment.tre.png)
 
 Roary comes with a python script that allows you to generate a few plots to graphically assess your analysis output. Try issuing the following command:
 
