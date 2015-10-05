@@ -14,9 +14,12 @@ Assuming you have Prokka and Roary installed and in your PATH variable, go ahead
 		wget https://github.com/CBIBUNAB/tutorials/blob/master/genomes/GCA_000021185.1_ASM2118v1_genomic.fna
 		wget https://github.com/CBIBUNAB/tutorials/blob/master/genomes/GCA_000026705.1_ASM2670v1_genomic.fna
 		wget https://github.com/CBIBUNAB/tutorials/blob/master/genomes/GCA_000196035.1_ASM19603v1_genomic.fna
+
 You should see something like the following:
 
-![genomes]()
+![genomes](https://github.com/CBIBUNAB/tutorials/blob/master/img/genomes.png)
+
+
 
 # Citation
 
