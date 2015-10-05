@@ -37,7 +37,7 @@ We selected the following six genomes based on their level of completeness (fini
 
 # Annotating genomes
 
-By annotsating the genomes we mean to add information regarding genes, their location, strandedness, and features and attributes. Now that you have the genomes, we need to annotate them to determine the location and attributes of the genes contained in them. We will use Prokka because it's extremely fast and it performs well, and also becasue the *features* file that produces (GFF3) is compatible with Roary.
+By annotating the genomes we mean to add information regarding genes, their location, strandedness, and features and attributes. Now that you have the genomes, we need to annotate them to determine the location and attributes of the genes contained in them. We will use Prokka because it's extremely fast and it performs well, and also because the *features* file that produces (GFF3) is compatible with Roary.
 
 		prokka --kingdom Bacteria --outdir prokka_GCA_000008285 --genus Listeria --locustag GCA_000008285 GCA_000008285.1_ASM828v1_genomic.fna
 
@@ -46,6 +46,24 @@ Make sure you annotate the six genomes by replacing the `-outdir` and `-locustag
 You should end up with 11 files including a .gff file. 
 
 ![Prokka output](https://github.com/CBIBUNAB/tutorials/blob/master/img/prokka.png)
+
+I'm coping a description of the output files from the Prokka documentation here, but please check with the developers for in-depth documentation.
+
+#### Output Files
+
+| Extension | Description |
+| --------- | ----------- |
+| .gff | This is the master annotation in GFF3 format, containing both sequences and annotations. It can be viewed directly in Artemis or IGV. |
+| .gbk | This is a standard Genbank file derived from the master .gff. If the input to prokka was a multi-FASTA, then this will be a multi-Genbank, with one record for each sequence. |
+| .fna | Nucleotide FASTA file of the input contig sequences. |
+| .faa | Protein FASTA file of the translated CDS sequences. |
+| .ffn | Nucleotide FASTA file of all the annotated sequences, not just CDS. |
+| .sqn | An ASN1 format "Sequin" file for submission to Genbank. It needs to be edited to set the correct taxonomy, authors, related publication etc. |
+| .fsa | Nucleotide FASTA file of the input contig sequences, used by "tbl2asn" to create the .sqn file. It is mostly the same as the .fna file, but with extra Sequin tags in the sequence description lines. |
+| .tbl | Feature Table file, used by "tbl2asn" to create the .sqn file. |
+| .err | Unacceptable annotations - the NCBI discrepancy report. |
+| .log | Contains all the output that Prokka produced during its run. This is a record of what settings you used, even if the --quiet option was enabled. |
+| .txt | Statistics relating to the annotated features found. |
 
 GFF files are the input for Roary to compute the pangenome and contain all the annotations plus the genome sequence in fasta format appended at the end.
 
