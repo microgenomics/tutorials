@@ -9,13 +9,13 @@ This demo relies on two pieces of software, *Prokka* and *Roary*, so please reme
 For details on obtaining Prokka and Roary, please visit their GiHub repos [here](https://github.com/tseemann/prokka/blob/master/README.md) and [here](https://github.com/sanger-pathogens/Roary/blob/master/README.md).
 
 Assuming you have Prokka and Roary installed and in your PATH variable, go ahead and download the six *Listeria monocytogenes* genomes we are going to use for this demo. From the Terminal:
-
-		wget https://github.com/CBIBUNAB/tutorials/blob/master/genomes/GCA_000008285.1_ASM828v1_genomic.fna
-		wget https://github.com/CBIBUNAB/tutorials/blob/master/genomes/GCA_000021185.1_ASM2118v1_genomic.fna
-		wget https://github.com/CBIBUNAB/tutorials/blob/master/genomes/GCA_000026705.1_ASM2670v1_genomic.fna
-		wget https://github.com/CBIBUNAB/tutorials/blob/master/genomes/GCA_000196035.1_ASM19603v1_genomic.fna
-		wget https://github.com/CBIBUNAB/tutorials/blob/master/genomes/GCA_000168635.2_ASM16863v2_genomic.fna
-		wget https://github.com/CBIBUNAB/tutorials/blob/master/genomes/GCA_000168815.1_ASM16881v1_genomic.fna
+		
+		wget https://raw.githubusercontent.com/CBIBUNAB/tutorials/master/genomes/GCA_000008285.1_ASM828v1_genomic.fna
+		wget https://raw.githubusercontent.com/CBIBUNAB/tutorials/master/genomes/GCA_000021185.1_ASM2118v1_genomic.fna
+		wget https://raw.githubusercontent.com/CBIBUNAB/tutorials/master/genomes/GCA_000026705.1_ASM2670v1_genomic.fna
+		wget https://raw.githubusercontent.com/CBIBUNAB/tutorials/master/genomes/GCA_000196035.1_ASM19603v1_genomic.fna
+		wget https://raw.githubusercontent.com/CBIBUNAB/tutorials/master/genomes/GCA_000168635.2_ASM16863v2_genomic.fna
+		wget https://raw.githubusercontent.com/CBIBUNAB/tutorials/master/genomes/GCA_000168815.1_ASM16881v1_genomic.fna
 
 You should see something like the following:
 
