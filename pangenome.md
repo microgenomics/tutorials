@@ -41,7 +41,11 @@ Now that you have the genomes, we need to annotate them to determine the locatio
 
 Make sure you annotate the six genomes by replacing the -outdir and -locustag and fasta file accordingly. It should take ~ 4 minutes per genome in a standard laptop computer.
 
-You should end up with 
+You should end up with 11 files including a .gff file. 
+
+![Prokka output](https://github.com/CBIBUNAB/tutorials/blob/master/img/prokka.png)
+
+GFF files are the input for Roary to compute the pangenome.
 
 # Citation
 
