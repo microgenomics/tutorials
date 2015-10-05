@@ -69,9 +69,23 @@ GFF files are the input for Roary to compute the pangenome and contain all the a
 
 # Determining the pangenome
 
-Let's put all the .gff files in the same folder (e.g., `./gff`)
+Let's put all the .gff files in the same folder (e.g., `./gff`) and run *Roary*
 		
 		roary -p -o ./demo -e -n -v ./gff/*.gff
+
+Roary will get all the coding sequences, convert them into protein, and create clusters. Then, using BLASTP and MCL, *Roary* will create clusters, and check for paralogs. Finally, *Roary* will take every isolate and order them by presence/absence of orthologs. The summary output is present in the `summary_statistics.txt` file. In our case, the results are as follows:
+
+Genes| Number
+|----|-------|
+|Core genes (99% <= strains <= 100%)|	2010|
+|Soft core genes (95% <= strains < 99%)| 0|
+|Shell genes (15% <= strains < 95%)| 2454|
+|Cloud genes (0% <= strains < 15%)|	0|
+|Total genes|	4464|
+
+
+
+
 
 We already have a phylogeny that represents the evolutionary history of this six isolates
 
