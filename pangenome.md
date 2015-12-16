@@ -1,5 +1,6 @@
+![banner](https://raw.githubusercontent.com/microgenomics/tutorials/master/img/microgenomics.png)
 # Genome annotation and Pangenome analysis
-
+-------------------------
 #### In this demo we will explore how to determine a pangenome from a collection of isolate genome sequences in fasta format
 
 This demo relies on two pieces of software, *Prokka* and *Roary*, so please remember to cite them if you end up publishing results obtained with these tools
@@ -19,7 +20,7 @@ Assuming you have Prokka and Roary installed and in your PATH variable, go ahead
 
 You should get something like the following:
 
-![genomes](https://github.com/CBIBUNAB/tutorials/blob/master/img/genomes.png)
+![genomes](https://github.com/microgenomics/tutorials/blob/master/img/genomes.png)
 
 
 These genomes correspond to isolates of *L. monocytogenes* reported in *Probing the pan-genome of Listeria monocytogenes: new insights into intraspecific niche expansion and genomic diversification* [PMID: 20846431](http://www.ncbi.nlm.nih.gov/pubmed/?term=20846431).
@@ -45,7 +46,7 @@ Make sure you annotate the six genomes by replacing the `-outdir` and `-locustag
 
 You should end up with 11 files including a .gff file. 
 
-![Prokka output](https://github.com/CBIBUNAB/tutorials/blob/master/img/prokka.png)
+![Prokka output](https://github.com/microgenomics/tutorials/blob/master/img/prokka.png)
 
 I'm copying a description of the output files from the Prokka documentation here, but please check with the developers for in-depth documentation.
 
@@ -87,7 +88,7 @@ Additionally, *Roary* produces a `gene_presence_absence.csv` file that can be op
 
 We already have a phylogeny that represents the evolutionary history of this six isolates, where they form clades according to their genotype, i.e., type I isolates together, and so on.
 
-![phylogeny](https://github.com/CBIBUNAB/tutorials/blob/master/img/core_gene_alignment.tre.png)
+![phylogeny](https://github.com/microgenomics/tutorials/blob/master/img/core_gene_alignment.tre.png)
 
 *Roary* comes with a python script that allows you to generate a few plots to graphically assess your analysis output. Try issuing the following command:
 
@@ -95,9 +96,9 @@ We already have a phylogeny that represents the evolutionary history of this six
 
 You should get three files: a pangenome matrix, a frequency plot, and a pie chart. 
 
-![matrix](https://github.com/CBIBUNAB/tutorials/blob/master/img/pangenome_matrix.png)
-![frequency](https://github.com/CBIBUNAB/tutorials/blob/master/img/pangenome_frequency.png)
-![pie](https://github.com/CBIBUNAB/tutorials/blob/master/img/pangenome_pie.png)
+![matrix](https://github.com/microgenomics/tutorials/blob/master/img/pangenome_matrix.png)
+![frequency](https://github.com/microgenomics/tutorials/blob/master/img/pangenome_frequency.png)
+![pie](https://github.com/microgenomics/tutorials/blob/master/img/pangenome_pie.png)
 
 
 ## Citation

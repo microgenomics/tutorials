@@ -1,7 +1,8 @@
+![banner](https://raw.githubusercontent.com/microgenomics/tutorials/master/img/microgenomics.png)
+
 # PathoScope Tutorial
 -------------------------
 
-![banner](https://raw.githubusercontent.com/ecastron/PS_demo/master/img/banner.png)
 
 ##### In this demo we will explore how to get a taxonomic profile from a metagenomic experiment using PathoScope 2.0. A more in-depth tutorial can be found in the **PathoScope** repo [here](https://github.com/PathoScope/PathoScope/raw/master/pathoscope2.0_v0.02_tutorial.pdf)
 
