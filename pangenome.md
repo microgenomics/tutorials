@@ -20,7 +20,7 @@ Assuming you have Prokka and Roary installed and in your PATH variable, go ahead
 
 You should get something like the following:
 
-![genomes](https://github.com/microgenomics/tutorials/blob/master/img/genomes.png)
+![genomes](https://raw.githubusercontent.com/microgenomics/tutorials/master/img/genomes.png)
 
 
 These genomes correspond to isolates of *L. monocytogenes* reported in *Probing the pan-genome of Listeria monocytogenes: new insights into intraspecific niche expansion and genomic diversification* [PMID: 20846431](http://www.ncbi.nlm.nih.gov/pubmed/?term=20846431).
@@ -46,7 +46,7 @@ Make sure you annotate the six genomes by replacing the `-outdir` and `-locustag
 
 You should end up with 11 files including a .gff file. 
 
-![Prokka output](https://github.com/microgenomics/tutorials/blob/master/img/prokka.png)
+![Prokka output](https://raw.githubusercontent.com/microgenomics/tutorials/master/img/prokka.png)
 
 I'm copying a description of the output files from the Prokka documentation here, but please check with the developers for in-depth documentation.
 
@@ -72,7 +72,7 @@ GFF files are the input for Roary to compute the pangenome and contain all the a
 
 Let's put all the .gff files in the same folder (e.g., `./gff`) and run *Roary*
 		
-		roary -p -o ./demo -e -n -v ./gff/*.gff
+		roary -f ./demo -e -n -v ./gff/*.gff
 
 Roary will get all the coding sequences, convert them into protein, and create pre-clusters. Then, using BLASTP and MCL, *Roary* will create clusters, and check for paralogs. Finally, *Roary* will take every isolate and order them by presence/absence of orthologs. The summary output is present in the `summary_statistics.txt` file. In our case, the results are as follows:
 
@@ -88,7 +88,7 @@ Additionally, *Roary* produces a `gene_presence_absence.csv` file that can be op
 
 We already have a phylogeny that represents the evolutionary history of this six isolates, where they form clades according to their genotype, i.e., type I isolates together, and so on.
 
-![phylogeny](https://github.com/microgenomics/tutorials/blob/master/img/core_gene_alignment.tre.png)
+![phylogeny](https://raw.githubusercontent.com/microgenomics/tutorials/master/img/core_gene_alignment.tre.png)
 
 *Roary* comes with a python script that allows you to generate a few plots to graphically assess your analysis output. Try issuing the following command:
 
@@ -96,10 +96,72 @@ We already have a phylogeny that represents the evolutionary history of this six
 
 You should get three files: a pangenome matrix, a frequency plot, and a pie chart. 
 
-![matrix](https://github.com/microgenomics/tutorials/blob/master/img/pangenome_matrix.png)
-![frequency](https://github.com/microgenomics/tutorials/blob/master/img/pangenome_frequency.png)
-![pie](https://github.com/microgenomics/tutorials/blob/master/img/pangenome_pie.png)
+![matrix](https://raw.githubusercontent.com/microgenomics/tutorials/master/img/pangenome_matrix.png)
+![frequency](https://raw.githubusercontent.com/microgenomics/tutorials/master/img/pangenome_frequency.png)
+![pie](https://raw.githubusercontent.com/microgenomics/tutorials/master/img/pangenome_pie.png)
 
+## Pangenome sequence analysis
+We have already Genome annotation and Pangenome analysis, but if you wanna know the secuence of a gene in particular in the pangenome you have to search by your own the secuence in the .ffn files. To aboid this inconvenient, Enzo Guerrero-Araya wrote a scritp in Python3 that make csv files of all loci in the pangenome. The csv's files can be imported to a database like Sqlite3.
+
+Let's put all the .ffn files in the same folder (e.g., `./ffn`) and run *GeneratorDB.py* in the same directory where is the `gene_presence_absence.csv` file.
+		
+	python3 GeneratorDB.py ffn
+
+The script in this version will generate 4 csv files:
+
+Files| Description
+|---|---|
+|genomas_locus.csv|It contains 2 columns [name of genome, name of locus]|
+|pangenoma.csv|It contains all the information of the annotation that Roary reported in the `gene_presence_absence.csv` file|
+|pangenoma_locus.csv|It contains 2 columns [name of gene, name of locus]|
+|locus_sequence.csv|It contains 2 columns [name of locus, nucleotide sequence]|
+
+Now we have all csv files for make our own database, in terminal type:
+
+	sqlite3 database.sqlite
+
+In the sqlite3 prompt type:
+	
+	create table genomas_locus (cod text, locus text);
+	create table pangenoma (gene text, non_unique_gene_name text, annotation text, no_isolates integer, no_sequences integer, avg_sequences_per_isolate integer, genome_fragment integer, order_within_fragment integer, accessory_fragment integer, accessory_order_with_fragment integer, qc text, min_group_size_nuc integer, max_group_size_nuc integer, avg_group_size_nuc integer);
+	create table pangenoma_locus (gene text, locus text);
+	create table locus_sequence (locus text, sequence text);
+	
+	.separator '|'
+	.import genomas_locus.csv genomas_locus
+	.import pangenoma.csv pangenoma
+	.import pangenoma_locus.csv pangenoma_locus
+	.import locus_sequence.csv locus_sequence
+	
+	create index genomas_locus_index on genomas_locus(cod, locus);
+	create index pangenoma_index on pangenoma(gene, non_unique_gene_name, annotation, no_isolates, no_sequences, avg_sequences_per_isolate, genome_fragment, order_within_fragment, accessory_fragment, accessory_order_with_fragment, qc, min_group_size_nuc, max_group_size_nuc, avg_group_size_nuc);
+	create index pangenoma_locus_index on pangenoma_locus(gene, locus);
+	create index locus_sequence_index on locus_sequence(locus, sequence);
+
+Now just we have to join tables with sql sentences like:
+
+	select '>'|| cod || '|' || locus_sequence.locus || '|' || pangenoma.gene || x'0a' || sequence
+	from locus_sequence
+	inner join pangenoma_locus on locus_sequence.locus = pangenoma_locus.locus
+	inner join pangenoma on pangenoma_locus.gene = pangenoma.gene
+	inner join genomas_locus on locus_sequence.locus = genomas_locus.locus
+	where pangenoma.gene = 'tetC';
+	
+	>GCA_000008285_01152016|GCA_000008285_02480|tetC
+	ATGGAAAAGAAGCGGACTCGGGCAGAAGAATTAGGAATAACTAGAAGAAAAATTTTGGATACAGCACGTGATTTATTTATGGAAAAGGGTTACCGGGCAGTTTCAACAAGAGAAATAGCTAAAATTGCCAACATTACCCAACCGGCACTATATCACCACTTTGAAGATAAAGAATCCCTATATATTGAAGTGGTTCGTGAATTGACGCAAAATATCCAAGTGGAAATGCATCCAATTATGCAAGTGACCAAAGCAAAAGAAGAACAATTACATGATATGTTAATTATGTTAATTGAGGAACATCCAACCAATATTCTATTAATGATTCACGATATTCTTAATGAAATGAAACCAGAAAATCAATTTTTACTTTATAAATTATGGCAAAAAACCTATTTGGAACCATTTCAACTATTTTTTGAGCGTCTAGAAAATGCTGGCGAATTGCGTGATGGTGTCAGTGCTGAGACTGCTGCGAGATACTGTTTGTCCACTATTAGCCCTCTTTTTTCTGGGAAAGGCAGCTTTGCGCAAAAGCAAACGACTACAGAACAAATTGATGAATTAATCAACTTAATGATGTTTGGTATATGTAAAAAAGAGGTATAA
+	>GCA_000021185_01152016|GCA_000021185_00131|tetC
+	ATGGAAAAGAAGCGGACTCGAGCAGAAGAATTAGGAATAACCAGAAGGAAAATCCTTGATACAGCAAGGGATTTATTTATGGAAAAAGGGTACCGGGCAGTCTCGACAAGAGAAATTGCTAAAATTGCCAAAATTACCCAACCAGCACTTTATCACCATTTTGAAGATAAAGAATCACTTTATATTGAAGTAGTTCGTGAATTGACGCAAAATATTCAAGTGGAAATGCACCCAATTATGCAAACGAGCAAAGCAAAAGAAGAACAACTGCATGATATGTTAATCATGTTAATTGAGGAGCATCCAACCAATATTCTGCTAATGATTCATGATATTCTTAATGAAATGAAGCCAGAAAATCAATTTTTACTTTATAAATTGTGGCAAAAAACCTATTTAGAACCATTTCAAGACTTTTTTGAGCGATTAGAAAATGCTGGCGAATTGCGTGATGGTATCAGTGCTGAGACCGCTGCGAGATACTGTTTATCCACTATTAGCCCGCTTTTTTCAGGGAAAGGTAGCTTTGCGCAAAAGCAAACGACTACAGAACAAATCGATGAATTAATCAACTTAATGATGTTTGGCATATGTAAAAAAGAGGTATAA
+	>GCA_000026705_01152016|GCA_000026705_02479|tetC
+	ATGGAAAAGAAGCGGACTCGGGCAGAAGAATTAGGAATAACTAGAAGAAAAATTTTGGATACAGCACGTGATTTATTTATGGAAAAGGGTTACCGGGCAGTTTCAACAAGAGAAATAGCTAAAATTGCCAACATTACCCAACCGGCACTATATCACCACTTTGAAGATAAAGAATCCCTATATATTGAAGTGGTTCGTGAATTGACGCAAAATATCCAAGTGGAAATGCATCCAATTATGCAAGTGACCAAAGCAAAAGAAGAACAATTACATGATATGTTAATTATGTTAATTGAGGAACATCCAACCAATATTCTATTAATGATTCACGATATTCTTAATGAAATGAAACCAGAAAATCAATTTTTACTTTATAAATTATGGCAAAAAACCTATTTGGAACCATTTCAACTATTTTTTGAGCGTCTAGAAAATGCTGGCGAATTGCGTGATGGTGTCAGTGCTGAGACTGCTGCGAGATACTGTTTGTCCACTATTAGCCCTCTTTTTTCTGGGAAAGGCAGCTTTGCGCAAAAGCAAACGACTACAGAACAAATTGATGAATTAATCAACTTAATGATGTTTGGTATATGTAAAAAAGAGGTATAA
+	>GCA_000168635_01152016|GCA_000168635_02549|tetC
+	ATGGAAAAGAAGCGGACTCGAGCAGAAGAATTAGGAATAACTAGAAGAAAAATTTTGGATACAGCACGTGATTTATTTATGGAAAAGGGTTACCGGGCAGTTTCTACAAGAGAAATAGCTAAAATTGCTAACATTACCCAACCGGCACTTTATCATCACTTTGAAGATAAAGAATCCCTATATATTGAAGTGGTTCGTGAATTGACGCAAAATATCCAGGTGGAAATGCATCCAATTATGCAAACGAACAAAGCAAAAGAAGAACAATTACATGATATGTTAATTATGTTAATTGAGGAACATCCCACCAATATTCTATTAATGATTCACGATATTCTTAATGAAATGAAACCAGAGAATCAATTTTTACTTTATAAATTATGGCAAAAAACCTATTTAGAACCATTTCAACAATTTTTTGAGCGTCTAGAAAATGCTGGTGAATTGCGTAATGGTATCAGTGCTGAGACCGCTGCAAGATACTGTTTGTCCACTATTAGCCCTCTTTTTTCAGGGAAAGGTAGCTTTGCGCAAAAGCAAACGACTACAGAACAAATCGATGAATTAATCAACTTAATGATGTTTGGCATATGTAAAAAAGAGGTATAA
+	>GCA_000168815_01152016|GCA_000168815_01572|tetC
+	ATGGAAAAGAAGCGGACTCGGGCAGAAGAATTAGGAATAACTAGAAGAAAAATTTTGGATACAGCACGTGATTTATTTATGGAAAAGGGTTACCGGGCAGTTTCAACAAGAGAAATAGCTAAAATTGCCAACATTACCCAACCGGCACTATATCACCACTTTGAAGATAAAGAATCCCTATATATTGAAGTGGTTCGTGAATTGACGCAAAATATCCAAGTGGAAATGCATCCAATTATGCAAGTGACCAAAGCAAAAGAAGAACAATTACATGATATGTTAATTATGTTAATTGAGGAACATCCAACCAATATTCTATTAATGATTCACGATATTCTTAATGAAATGAAACCAGAAAATCAATTTTTACTTTATAAATTATGGCAAAAAACCTATTTGGAACCATTTCAACTATTTTTTGAGCGTCTAGAAAATGCTGGCGAATTGCGTGATGGTGTCAGTGCTGAGACTGCTGCGAGATACTGTTTGTCCACTATTAGCCCTCTTTTTTCTGGGAAAGGCAGCTTTGCGCAAAAGCAAACGACTACAGAACAAATTGATGAATTAATCAACTTAATGATGTTTGGTATATGTAAAAAAGAGGTATAA
+	>GCA_000196035_01152016|GCA_000196035_02552|tetC
+	ATGGAAAAGAAGCGGACTCGAGCAGAAGAATTAGGAATAACTAGAAGAAAAATTTTGGATACAGCACGTGATTTATTTATGGAAAAGGGTTACCGGGCAGTTTCTACAAGAGAAATAGCTAAAATTGCCAACATTACCCAACCGGCACTGTATCATCACTTTGAAGATAAAGAATCCCTATATATTGAAGTGGTTCGTGAATTGACGCAAAATATCCAGGTGGAAATGCATCCAATTATGCAAACGAACAAAGCAAAAGAAGAACAATTACATGATATGTTAATTATGTTAATTGAGGAACATCCCACCAATATTCTATTAATGATTCACGATATTCTTAATGAAATGAAACCAGAGAATCAATTTTTACTTTATAAATTATGGCAAAAAACCTATTTAGAACCATTTCAACAATTTTTTGAGCGTCTAGAAAATGCTGGTGAATTGCGTAATGGTATCAGTGCTGAGACCGCTGCAAGATACTGTTTGTCCACTATTAGCCCTCTTTTTTCAGGGAAAGGTAGCTTTGCGCAAAAGCAAACGACTACAGAACAAATCGATGAATTAATCAACTTAATGATGTTTGGCATATGTAAAAAAGAGGTATAA
+
+And thats its all. we get all secuences in fasta format of tetC gene.
+ 
 
 ## Citation
 
@@ -112,5 +174,4 @@ Andrew J. Page, Carla A. Cummins, Martin Hunt, Vanessa K. Wong, Sandra Reuter, M
 *Roary: Rapid large-scale prokaryote pan genome analysis*  
 **Bioinformatics** 2015 Jul 20. pii: btv421  
 [PMID: 26198102](http://www.ncbi.nlm.nih.gov/pubmed/26198102)
-
 
