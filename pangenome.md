@@ -103,7 +103,7 @@ You should get three files: a pangenome matrix, a frequency plot, and a pie char
 ## Pangenome sequence analysis
 We have already Genome annotation and Pangenome analysis, but if you wanna know the secuence of a gene in particular in the pangenome you have to search by your own the secuence in the .ffn files. To aboid this inconvenient, Enzo Guerrero-Araya wrote a scritp in Python3 that make csv files of all loci in the pangenome. The csv's files can be imported to a database like Sqlite3.
 
-Let's put all the .ffn files in the same folder (e.g., `./ffn`) and run *GeneratorDB.py* in the same directory where is the `gene_presence_absence.csv` file.
+Let's put all the .ffn files in the same folder (e.g., `./ffn`) and run [*GeneratorDB.py*](https://raw.githubusercontent.com/jefesin/tutorials/patch-1/GeneratorDB.py) in the same directory where is the `gene_presence_absence.csv` file.
 		
 	python3 GeneratorDB.py ffn
 
