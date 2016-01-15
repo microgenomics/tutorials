@@ -116,11 +116,11 @@ Files| Description
 |pangenoma_locus.csv|It contains 2 columns [name of gene, name of locus]|
 |locus_sequence.csv|It contains 2 columns [name of locus, nucleotide sequence]|
 
-Now we have all csv files for make our own database, in terminal type:
+Now we have all csv files for make our own database, in terminal you have to type:
 
 	sqlite3 database.sqlite
 
-In the sqlite3 prompt type:
+In the sqlite3 prompt rum:
 	
 	create table genomas_locus (cod text, locus text);
 	create table pangenoma (gene text, non_unique_gene_name text, annotation text, no_isolates integer, no_sequences integer, avg_sequences_per_isolate integer, genome_fragment integer, order_within_fragment integer, accessory_fragment integer, accessory_order_with_fragment integer, qc text, min_group_size_nuc integer, max_group_size_nuc integer, avg_group_size_nuc integer);
@@ -138,7 +138,7 @@ In the sqlite3 prompt type:
 	create index pangenoma_locus_index on pangenoma_locus(gene, locus);
 	create index locus_sequence_index on locus_sequence(locus, sequence);
 
-Now just we have to join tables with sql sentences like:
+Now just we have to join tables with sql query like:
 
 	select '>'|| cod || '|' || locus_sequence.locus || '|' || pangenoma.gene || x'0a' || sequence
 	from locus_sequence
