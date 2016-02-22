@@ -35,6 +35,7 @@ Lastly, type `./fastq-dump -h` to see the help menu.
 Next, we need to download actual data. We will use a somewhat small file hosted at SRA under the accession `SRR3171211`. Issue the following command in order to download the data:
 
 	./fastq-dump --accession SRR3171211 --outdir my_outdir
+where `SRR3171211` is the file we want and `my_outdir` is simply an arbitrary name for the output directory
 
 ![dump](https://raw.githubusercontent.com/microgenomics/tutorials/master/img/sra05.png)
 
