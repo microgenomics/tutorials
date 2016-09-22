@@ -1,4 +1,4 @@
-# Laboratorio de Genómica
+# Laboratorio de Genómica para Informática Médica
 -
 La actividad del día de hoy consiste en ganar experiencia directa con datos de secuenciamiento masivo y algunos pasos básicos para transformar esos datos en información biológica.  
 
