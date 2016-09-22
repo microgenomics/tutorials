@@ -83,4 +83,37 @@ En el contig 74 (NODE_74) hay una secuencia codificante *bla 1 CDS* de 876 nucle
 
 ![lactam2](https://github.com/microgenomics/tutorials/raw/master/img/lactam2.png)
 
-El producto génico de esta CDS es 
+El producto génico de esta CDS es una "Beta-lactamase OXA-1 precursor". Vamos a la sección Structure y busquemos las palabras clave "Beta-lactamase OXA-1".
+
+![struc](https://github.com/microgenomics/tutorials/raw/master/img/struc.png)
+
+La búsqueda nos retorna cinco resultados. Si hacemos clic en alguno, podemos acceder a la estructura cristalina de la proteína codificada por el gen.
+
+		¿Qué otra especie posee está proteína?
+		¿Cuántas cadenas tiene la proteína?
+		¿Cuál es el sitio activo?
+
+## Referencias
+
+Seemann T.  
+*Prokka: rapid prokaryotic genome annotation*  
+**Bioinformatics** 2014 Jul 15;30(14):2068-9.   
+[PMID:24642063](http://www.ncbi.nlm.nih.gov/pubmed/24642063)  
+
+Bankevich, A. et al.  
+*SPAdes: a new genome assembly algorithm and its applications to single-cell sequencing*  
+**Journal of Computational Biology** 2012 19.5 (2012): 455-477.  
+[PMID:22506599](https://www.ncbi.nlm.nih.gov/pubmed/22506599)  
+
+Gurevich, A et al.  
+*QUAST: quality assessment tool for genome assemblies*  
+**Bioinformatics** 29.8 (2013): 1072-1075  
+[PMID:23422339](https://www.ncbi.nlm.nih.gov/pubmed/23422339)  
+
+Kearse, M, et al.  
+*Geneious Basic: an integrated and extendable desktop software platform for the organization and analysis of sequence data*  
+**Bioinformatics** 28.12 (2012): 1647-1649.  
+[PMID:22543367](https://www.ncbi.nlm.nih.gov/pubmed/22543367)  
+
+**FastQC**
+[http://www.bioinformatics.babraham.ac.uk/projects/fastqc/](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
