@@ -74,3 +74,13 @@ Ahora carguemos el archivo .gbk en Geneious. Deberíamos ver algo como la siguie
 ![geneious](https://github.com/microgenomics/tutorials/raw/master/img/geneious.png)
 
 Geneious es una herramienta muy poderosa donde podemos explorar de manera gráfica los resultados del proceso de anotación genómica. Exploremos de manera libre las herramientas y opciones que provee Geneious. En la esquina superior derecha pueden escoger e ir navegando contig por contig y explorando las anotaciones que fueron agregadas a la secuencia de DNA.
+
+Vayamos a la pestaña de Annotations y seleccionemos All Sequences en la esquina superior izquierda. Luego podemos buscar anotaciones específicas a través de todos los contigs. Probemos con "Lactam"
+
+![lactam](https://github.com/microgenomics/tutorials/raw/master/img/lactam.png)
+
+En el contig 74 (NODE_74) hay una secuencia codificante *bla 1 CDS* de 876 nucleótidos de longitud que está codificada en la posición Reverse de la secuencia. Seleccionemos este resultado y vayamos a Sequence View de nuevo.
+
+![lactam2](https://github.com/microgenomics/tutorials/raw/master/img/lactam2.png)
+
+El producto génico de esta CDS es 
