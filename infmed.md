@@ -55,12 +55,22 @@ La ejecución de QUAST debería tomar 10 minutos aproximadamente. Una vez finali
 		¿Cuál es la longitud de nuestro genoma?
 		¿Cuántos genes tiene en comparación con la referencia? ¿Su contenido GC?
 
+Una vez finalizado QUAST y la inspección de los resultados, podemos continuar con la anotación del genoma. Anotar un genoma tiene que ver con identificar dónde están los genes, qué hacen, y en qué proceso metabólico están involucrados. Vamos a usar un programa que usa una combinación de búsquedas por similitud y *ab initio*. El programa se llama [Prokka](https://github.com/tseemann/prokka) y fue desarrollado por un investigador australiano, [Torsten Seemann](https://twitter.com/torstenseemann).
 
+Desde la Terminal ejecutemos Prokka al escribir `prokka`
 
-### Los siguientes pasos los vamos a seguir durante la clase en la medida que el profesor los vaya demostrando. 
+![prokka](https://github.com/microgenomics/tutorials/raw/master/img/prokkaterm.png)
 
+Al igual que con SPAdes, necesitamos indicarle a prokka cómo procesar nuestro archivo con contigs, qué bases de datos usar, y como realizar los cálculos.
 
+		prokka --outdir anotación --prefix EColi --addgenes --locustag Ecoli --genus Escherichia --species coli --kingdom Bacteria --gram neg --cpus 16 --evalue 1e-5 contigs.fasta
 
+El proceso completo debería tomar 10 minutos aproximadamente. Una vez terminado, Prokka va a haber generado 11 archivos de salida, e.g., .gbk, .fna, .faa, .ffn, etc.
 
+		¿Qué información contienen estos archivos?
 
- 
+Ahora carguemos el archivo .gbk en Geneious. Deberíamos ver algo como la siguiente imagen:
+
+![geneious](https://github.com/microgenomics/tutorials/raw/master/img/geneious.png)
+
+Geneious es una herramienta muy poderosa donde podemos explorar de manera gráfica los resultados del proceso de anotación genómica. Exploremos de manera libre las herramientas y opciones que provee Geneious. En la esquina superior derecha pueden escoger e ir navegando contig por contig y explorando las anotaciones que fueron agregadas a la secuencia de DNA.
