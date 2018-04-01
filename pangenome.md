@@ -44,9 +44,7 @@ By annotating the genomes we mean to add information regarding genes, their loca
 
 Make sure you annotate the six genomes by replacing the `-outdir` and `-locustag` and `fasta file` accordingly. It should take ~ 4 minutes per genome in a standard laptop computer.
 
-You should end up with 11 files including a .gff file. 
-
-![Prokka output](https://raw.githubusercontent.com/microgenomics/tutorials/master/img/prokka.png)
+You should end up with 11 files including a .gff file.
 
 I'm copying a description of the output files from the Prokka documentation here, but please check with the developers for in-depth documentation.
 
