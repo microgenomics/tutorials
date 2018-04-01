@@ -90,7 +90,9 @@ We already have a phylogeny that represents the evolutionary history of this six
 
 ![phylogeny](https://raw.githubusercontent.com/microgenomics/tutorials/master/img/core_gene_alignment.tre.png)
 
-*Roary* comes with a python script that allows you to generate a few plots to graphically assess your analysis output. You will need the `gene_presence_absence.csv` file and the phylogeny in a newick tree file, which you can get from [here](https://github.com/microgenomics/tutorials/raw/master/core_gene_alignment.nwk). Then try using the following command:
+When you analyze your own data, you will need a phylogeny that represents the evolutionary history of your isolates. The inference of a phylogenetic tree is not part of roary's functions, but you can use the core gene alignment (file: `core_gene_alignment.aln`) as input to infer a tree.
+
+*Roary* comes with a python script that allows you to generate a few plots to graphically assess your analysis output. You will need the `gene_presence_absence.csv` file and the phylogeny, which you can get from [here](https://github.com/microgenomics/tutorials/blob/master/core_gene_alignment.nwk). Then try using the following command:
 
 		python roary_plots.py core_gene_alignment.nwk gene_presence_absence.csv
 
