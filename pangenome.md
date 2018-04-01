@@ -90,7 +90,7 @@ We already have a phylogeny that represents the evolutionary history of this six
 
 ![phylogeny](https://raw.githubusercontent.com/microgenomics/tutorials/master/img/core_gene_alignment.tre.png)
 
-*Roary* comes with a python script that allows you to generate a few plots to graphically assess your analysis output. Try issuing the following command:
+*Roary* comes with a python script that allows you to generate a few plots to graphically assess your analysis output. You will need the `gene_presence_absence.csv` file and the phylogeny in a newick tree file, which you can get from [here](https://github.com/microgenomics/tutorials/raw/master/core_gene_alignment.nwk). Then try using the following command:
 
 		python roary_plots.py core_gene_alignment.nwk gene_presence_absence.csv
 
@@ -105,7 +105,7 @@ We have already Genome annotation and Pangenome analysis, but if you wanna know 
 
 Let's put all the .ffn files in the same folder (e.g., `./ffn`) and run [*DBGenerator.py*](https://github.com/eandree/tutorials/blob/patch-1/DBGenerator.py) in the same directory where is the `gene_presence_absence.csv` file.
 		
-	python3 GeneratorDB.py ffn
+	python3 DBGenerator.py ffn
 
 The script in this version will generate 4 csv files:
 
